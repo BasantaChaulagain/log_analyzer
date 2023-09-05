@@ -52,5 +52,6 @@ server/indexes/
 
 # Data
 *.csv
+*.csv_init_table.dat
 *.gv
 *.png
