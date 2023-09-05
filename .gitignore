@@ -40,6 +40,7 @@
 
 #DS_Store
 .DS_Store
+.vscode
 
 # Encrypted folders
 client/enc/
