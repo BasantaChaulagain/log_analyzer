@@ -1,23 +1,25 @@
-# SSE Implementation
+# Log Analyzer
 
-# Dependencies
+This repo contains the tools for analyzing linux audit logs.
 
-The python dependencies of the project are written in requirements.txt file. Install all the requirements before running the project.
+## Module auditBridge 
 
-# How To
-To use this SSE implementation, you must first have the server running:
+This module converts raw audit logs to csv format. [34 fields](auditBridge/README_CSV.txt) are extracted from the raw audit logs and stored in csv file.
 
-	python sse_server.py
+1. Build the files using a 'make' command.
 
-Then invoke the client with one of the requisite options:
+2. Usage: ./UBSI_auditBridge -c -u -F <audit log file>  >  <output csv file>
 
-	python client.py <OPTION>
+## Module tracking
 
-It is also required that the user has access to some set of audit log file.
+This module performs backtracking and forward tracking on the csv file converted using auditBridge module.
 
-## Options
-    -s, --search "<term(s)>"
-        Search for term or terms in quotations
+1. Build the files using a 'make' command.
 
-    -u, --update "<file>"
-        Updates a single file, included appending local index, appending encrypted remote index, encrypting "file", and sending it to server.
+2. For forward tracking: ./AUDIT_ft -i <csv file> -f <inode_number>
+
+3. For backward tracking: ./AUDIT_bt -i <csv file> -p <pid>
+
+4. To convert the .gv file to .png: dot -Tpng AUDIT_ft.gv > AUDIT_ft.png
+
+* For details on the usage of these modules, use -h option. e.g: ./AUDIT_ft -h *

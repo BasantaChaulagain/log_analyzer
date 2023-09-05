@@ -1,9 +1,0 @@
-GLOBAL:
-  CSV_INPUT: 1
-  
-PG_DATABASE:
-  dbname: DSSE
-  password: postgres
-  port: 5432
-  server: localhost
-  username: postgres
